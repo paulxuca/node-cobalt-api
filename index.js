@@ -62,7 +62,6 @@ CobaltClient.prototype._makeRequest = function(method, path, params, cb) {
     }
 
     var end_point = this._createEndpoint(path, params);
-    console.log(end_point);
     request({
         method: method,
         url: end_point.url,
