@@ -21,18 +21,19 @@ function CobaltClient(opts) {
 
 CobaltClient.prototype.get = function(path, params, cb) {
     this._makeRequest('get', path, params, cb);
+
 };
 
 CobaltClient.prototype._createEndpoint = function(path, params) {
     var end_point = BASE_URL + path;
     var haveParams = Object.keys(params).length != 0;
     var parameters = [];
-    
-    if(path.indexOf('/search') != -1 && Object.keys(params).indexOf('q') == -1){
-    	throw new Error('Search query does not have required parameter q.')
+
+    if (path.indexOf('/search') != -1 && Object.keys(params).indexOf('q') == -1) {
+        throw new Error('Search query does not have required parameter q.')
     }
 
-    if('id' in params){
+    if ('id' in params) {
         end_point += `/${params['id']}`;
     }
 
@@ -46,17 +47,18 @@ CobaltClient.prototype._createEndpoint = function(path, params) {
 
     end_point += `?key=${this.apiKey}`
 
-   
-    if(parameters.length != 0){
-    	for(var i =0; i< parameters.length; i++){
-    		end_point += parameters[i];
-    	}
+
+    if (parameters.length != 0) {
+        for (var i = 0; i < parameters.length; i++) {
+            end_point += parameters[i];
+        }
     }
     return {
         url: end_point
     };
 
 };
+
 
 CobaltClient.prototype._makeRequest = function(method, path, params, cb) {
 
