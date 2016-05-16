@@ -32,6 +32,10 @@ CobaltClient.prototype._createEndpoint = function(path, params) {
     	throw new Error('Search query does not have required parameter q.')
     }
 
+    if('id' in params){
+        end_point += `/${params['id']}`;
+    }
+
     if (haveParams) {
         for (var key in params) {
             if (params[key] != undefined) {
