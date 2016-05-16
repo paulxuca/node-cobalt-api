@@ -35,6 +35,13 @@ cobalt.get('/courses/search',{
   }, function(err, res) {
     console.log(res);
 });
+
+//Using the ':id' parameter is like using any other parameter.
+cobalt.get('/buildings',{
+   id:'005'
+  }, function(err, res) {
+    console.log(res);
+});
 ```
 API key is automatically passed.  
 
